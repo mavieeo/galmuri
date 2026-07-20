@@ -266,7 +266,7 @@
   table.compare tbody td.highlight{background:#FBF3E6; font-weight:700; color:var(--brass-2);}
   table.compare tbody tr:last-child td, table.compare tbody tr:last-child th{border-bottom:none;}
 
-  /* ================= RSVP / GOOGLE SHEETS FORM ================= */
+  /* ================= RSVP / FORMSPREE FORM ================= */
   .rsvp-section{background:var(--paper-2);}
   .rsvp-box{
     background:var(--white); 
@@ -542,7 +542,7 @@
   </div>
 </section>
 
-<!-- ================= RSVP (구글 시트 연동 폼) ================= -->
+<!-- ================= RSVP (Formspree 연동 폼) ================= -->
 <section class="rsvp-section" id="rsvp">
   <div class="wrap">
     <div class="rsvp-box">
@@ -552,20 +552,21 @@
         <p>참석 티켓은 500장 한정입니다.<br>사전 신청 정보를 작성해주시면 현장 좌석 배치 및 사은품 추첨 번호표를 신속히 안내해 드립니다.</p>
       </div>
 
-      <form class="rsvp-form" id="googleSheetForm">
+      <!-- Formspree Endpoint 적용 -->
+      <form class="rsvp-form" id="rsvpForm" action="https://formspree.io/f/mojgwyrb" method="POST">
         <div class="form-group">
           <label for="name">성함</label>
-          <input type="text" id="name" name="name" placeholder="홍길동" required>
+          <input type="text" id="name" name="성함" placeholder="홍길동" required>
         </div>
         
         <div class="form-group">
           <label for="phone">연락처</label>
-          <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
+          <input type="tel" id="phone" name="연락처" placeholder="010-0000-0000" required>
         </div>
         
         <div class="form-group">
           <label for="project">관심 사업 선택</label>
-          <select id="project" name="project">
+          <select id="project" name="관심사업">
             <option value="대화역세권지식산업단지">고양시 대화역세권지식산업단지 (하이스테이지)</option>
             <option value="검단리지구 도시개발사업">검단리지구 도시개발사업 (하이랜드)</option>
           </select>
@@ -583,30 +584,40 @@
 </footer>
 
 <script>
-  // 배포된 구글 앱스 스크립트 웹앱 URL 연동 완료
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbwl56Lp_DO_48SHawCSl9L7ABMGhw2dvN6fMcazUgm0Zq_ibaJwBTa0p7pxdOFNbCRKqA/exec';
-  const form = document.getElementById('googleSheetForm');
+  const form = document.getElementById('rsvpForm');
   const btn = document.getElementById('submitBtn');
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
     
     btn.disabled = true;
     btn.innerText = '제출 중...';
 
-    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-      .then(response => {
-        alert('신청이 성공적으로 접수되었습니다. 8월 22일 킨텍스에서 뵙겠습니다!');
-        btn.disabled = false;
-        btn.innerText = '신청 완료하기';
-        form.reset(); // 입력 폼 초기화
-      })
-      .catch(error => {
-        alert('신청 전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
-        console.error('Error!', error.message);
-        btn.disabled = false;
-        btn.innerText = '신청 완료하기';
+    const data = new FormData(form);
+    
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
       });
+      
+      if (response.ok) {
+        alert('신청이 성공적으로 접수되었습니다. 8월 22일 킨텍스에서 뵙겠습니다!');
+        form.reset();
+      } else {
+        // 비동기 fetch가 실패할 경우 기본 form 전송 방식으로 자동 백업 처리
+        form.submit();
+      }
+    } catch (error) {
+      // CORS나 브라우저 차단 시 기본 폼 전송으로 바로 넘겨 전송 실패 방지
+      form.submit();
+    } finally {
+      btn.disabled = false;
+      btn.innerText = '신청 완료하기';
+    }
   });
 </script>
 
