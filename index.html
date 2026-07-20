@@ -42,7 +42,7 @@
     pointer-events:none;
   }
 
-  /* ---------- label bar (recreates the ■ 표기 문서 탭 스타일) ---------- */
+  /* ---------- label bar ---------- */
   .label-bar{
     display:inline-flex; align-items:center; gap:10px;
     background:var(--navy); color:var(--white);
@@ -53,7 +53,7 @@
   }
   .label-bar::before{content:"■"; font-size:10px; color:var(--brass);}
 
-  /* ---------- ink-circle annotation, echoes the hand-drawn circles ---------- */
+  /* ---------- ink-circle annotation ---------- */
   .circled{position:relative; display:inline-block; padding:0 .15em;}
   .circled::after{
     content:"";
@@ -265,35 +265,61 @@
   }
   table.compare tbody td.highlight{background:#FBF3E6; font-weight:700; color:var(--brass-2);}
   table.compare tbody tr:last-child td, table.compare tbody tr:last-child th{border-bottom:none;}
-  .compare-callout{
-    margin-top:28px;
-    padding:26px 30px;
-    background:var(--white);
-    border:1px solid var(--line);
-    border-left:4px solid var(--red);
-    font-size:16px;
-    line-height:1.8;
-    color:var(--navy);
-  }
-  .compare-callout b{color:var(--red);}
-  .fine-print{margin-top:14px; font-size:12.5px; color:#928a76;}
 
-  /* ================= RSVP / FOOTER CTA ================= */
+  /* ================= RSVP / GOOGLE SHEETS FORM ================= */
   .rsvp-section{background:var(--paper-2);}
   .rsvp-box{
-    background:var(--white); border:1px solid var(--line);
-    padding:44px; display:grid; grid-template-columns:1fr auto; gap:30px; align-items:center;
+    background:var(--white); 
+    border:1px solid var(--line);
+    padding:44px; 
+    display:grid; 
+    grid-template-columns:1fr 1fr; 
+    gap:40px; 
+    align-items:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.03);
   }
   .rsvp-box h3{color:var(--navy); font-size:24px; margin-bottom:8px;}
-  .rsvp-box p{color:#5c5648; font-size:14.5px;}
-  .rsvp-form{display:flex; flex-direction:column; gap:10px; min-width:280px;}
-  .rsvp-form input{
-    padding:13px 14px; border:1px solid var(--line); background:var(--paper);
-    font-family:'Noto Sans KR',sans-serif; font-size:14px;
+  .rsvp-box p{color:#5c5648; font-size:14.5px; line-height:1.6;}
+  
+  .rsvp-form{display:flex; flex-direction:column; gap:16px;}
+  .form-group{display:flex; flex-direction:column; gap:6px;}
+  .form-group label{
+    font-size:13.5px;
+    font-weight:700;
+    color:var(--navy);
   }
-  .rsvp-form input:focus{outline:2px solid var(--brass); outline-offset:1px;}
-  .rsvp-form .btn{width:100%; text-align:center;}
-  .confirm-msg{display:none; margin-top:10px; font-size:13px; color:var(--navy); font-weight:700;}
+  .rsvp-form input, .rsvp-form select{
+    width:100%;
+    padding:13px 14px; 
+    border:1px solid var(--line); 
+    background:var(--paper);
+    font-family:'Noto Sans KR',sans-serif; 
+    font-size:14px;
+    color:var(--ink);
+  }
+  .rsvp-form input:focus, .rsvp-form select:focus{
+    outline:2px solid var(--brass); 
+    outline-offset:1px;
+    background:var(--white);
+  }
+  .submit-btn{
+    width:100%; 
+    padding:15px;
+    background-color:var(--navy);
+    color:var(--white);
+    border:none;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:background 0.2s, transform 0.15s ease;
+  }
+  .submit-btn:hover{
+    background-color:var(--navy-2);
+  }
+  .submit-btn:disabled{
+    background-color:#8e97a8;
+    cursor:not-allowed;
+  }
 
   footer{
     background:var(--navy); color:#aab2c4;
@@ -311,7 +337,7 @@
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
-    .btn{transition:none;}
+    .btn, .submit-btn{transition:none;}
   }
 </style>
 </head>
@@ -516,20 +542,36 @@
   </div>
 </section>
 
-<!-- ================= RSVP ================= -->
+<!-- ================= RSVP (구글 시트 연동 폼) ================= -->
 <section class="rsvp-section" id="rsvp">
   <div class="wrap">
     <div class="rsvp-box">
       <div>
+        <span class="label-bar" style="margin-bottom:16px;">사전 접수</span>
         <h3>총회 참석을 신청해주세요</h3>
-        <p>참석 티켓은 500장 한정입니다. 사전 신청 시 원활한 현장 안내를 도와드립니다.</p>
+        <p>참석 티켓은 500장 한정입니다.<br>사전 신청 정보를 작성해주시면 현장 좌석 배치 및 사은품 추첨 번호표를 신속히 안내해 드립니다.</p>
       </div>
-      <form class="rsvp-form" id="rsvpForm">
-        <input type="text" placeholder="성함" required>
-        <input type="tel" placeholder="연락처 (010-0000-0000)" required>
-        <input type="number" placeholder="참석 인원" min="1" value="1" required>
-        <button type="submit" class="btn btn-primary">신청 완료</button>
-        <div class="confirm-msg" id="confirmMsg">신청이 접수되었습니다. 8월 22일 킨텍스에서 뵙겠습니다.</div>
+
+      <form class="rsvp-form" id="googleSheetForm">
+        <div class="form-group">
+          <label for="name">성함</label>
+          <input type="text" id="name" name="name" placeholder="홍길동" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">연락처</label>
+          <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="project">관심 사업 선택</label>
+          <select id="project" name="project">
+            <option value="대화역세권지식산업단지">고양시 대화역세권지식산업단지 (하이스테이지)</option>
+            <option value="검단리지구 도시개발사업">검단리지구 도시개발사업 (하이랜드)</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="submit-btn" id="submitBtn">신청 완료하기</button>
       </form>
     </div>
   </div>
@@ -541,12 +583,30 @@
 </footer>
 
 <script>
-  document.getElementById('rsvpForm').addEventListener('submit', function(e){
+  // 배포된 구글 앱스 스크립트 웹앱 URL 연동 완료
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwl56Lp_DO_48SHawCSl9L7ABMGhw2dvN6fMcazUgm0Zq_ibaJwBTa0p7pxdOFNbCRKqA/exec';
+  const form = document.getElementById('googleSheetForm');
+  const btn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', e => {
     e.preventDefault();
-    document.getElementById('confirmMsg').style.display = 'block';
-    this.querySelectorAll('input').forEach(i => i.disabled = true);
-    this.querySelector('button').textContent = '신청 완료됨';
-    this.querySelector('button').disabled = true;
+    
+    btn.disabled = true;
+    btn.innerText = '제출 중...';
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+      .then(response => {
+        alert('신청이 성공적으로 접수되었습니다. 8월 22일 킨텍스에서 뵙겠습니다!');
+        btn.disabled = false;
+        btn.innerText = '신청 완료하기';
+        form.reset(); // 입력 폼 초기화
+      })
+      .catch(error => {
+        alert('신청 전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+        console.error('Error!', error.message);
+        btn.disabled = false;
+        btn.innerText = '신청 완료하기';
+      });
   });
 </script>
 
