@@ -18,6 +18,15 @@
     --red:#B23A2E;
     --line:#C9BFA6;
     --white:#FBF9F3;
+    --navy: #1b2845;          /* 테이블 헤더 네이비 */
+    --navy-dark: #152037;     /* '구분' 헤더 네이비 */
+    --th-bg: #e2ded0;         /* 왼쪽 '구분' 항목 배경색 */
+    --td-bg-even: #f7f5ee;    /* 짝수 행 데이터 셀 배경색 */
+    --td-bg-odd: #f1ede1;     /* 홀수 행 데이터 셀 배경색 */
+    --border-color: #d6cfbf;  /* 테두리 경계선 색상 */
+    --text-main: #111111;     /* 기본 텍스트 색상 */
+    --highlight-bg: #f9f0e1;  /* 하이라이트 셀 배경색 */
+    --highlight-text: #a86e1b;/* 하이라이트 텍스트 브라운/골드 */
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -246,7 +255,20 @@
     color:#c9cede;
     border-top:1px solid rgba(255,255,255,0.15);
   }
+  
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      background-color: #f7f4ea;
+      padding: 40px 20px;
+      color: var(--text-main);
+    }
+  
     /* 상단 타이틀 영역 */
     .header-container {
       max-width: 1100px;
