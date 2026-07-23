@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>갈머리지구 도시개발사업 조합원 총회 | 8.22 킨텍스</title>
+<title>갈머리지구 도시개발사업 주민설명회 | 8.22 킨텍스</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
@@ -65,7 +65,7 @@
     pointer-events:none;
   }
 
-  section{position:relative; padding:96px 24px;}
+  section{position:relative; padding:80px 24px;}
   .wrap{max-width:1080px; margin:0 auto; position:relative; z-index:2;}
 
   /* ================= HEADER / TICKER ================= */
@@ -87,7 +87,7 @@
   .hero-inner{
     position:relative;
     max-width:1080px; margin:0 auto;
-    padding:88px 24px 70px;
+    padding:80px 24px 60px;
     display:grid;
     grid-template-columns:1.1fr 0.9fr;
     gap:40px;
@@ -105,15 +105,15 @@
     font-family:'Noto Serif KR', serif;
   }
   .hero h1{
-    font-size:clamp(30px, 4.2vw, 46px);
+    font-size:clamp(30px, 4.2vw, 44px);
     font-weight:900;
     line-height:1.32;
     color:var(--navy);
     margin-bottom:20px;
   }
   .hero .sub{
-    font-size:19px; font-weight:500; color:var(--navy-2);
-    margin-bottom:34px;
+    font-size:18px; font-weight:500; color:var(--navy-2);
+    margin-bottom:30px;
   }
   .hero .sub b{color:var(--brass-2);}
 
@@ -123,7 +123,7 @@
   }
   .date-big{
     font-family:'IBM Plex Mono', monospace;
-    font-size:clamp(38px,5vw,54px);
+    font-size:clamp(36px,4.8vw,50px);
     font-weight:600; color:var(--navy);
     letter-spacing:-0.01em;
   }
@@ -154,7 +154,7 @@
     background:var(--white);
     border:1.5px dashed var(--navy);
     border-radius:6px;
-    padding:30px 26px;
+    padding:28px 24px;
     position:relative;
   }
   .ticket::before,.ticket::after{
@@ -168,29 +168,29 @@
   .ticket::after{right:-14px;}
   .ticket .t-label{font-size:12px; letter-spacing:0.14em; color:var(--brass-2); font-weight:700; margin-bottom:6px;}
   .ticket .t-title{font-family:'Noto Serif KR',serif; font-weight:700; font-size:20px; color:var(--navy); margin-bottom:18px;}
-  .ticket-row{display:flex; justify-content:space-between; padding:10px 0; border-top:1px solid var(--line); font-size:14px;}
+  .ticket-row{display:flex; justify-content:space-between; padding:10px 0; border-top:1px solid var(--line); font-size:13.5px;}
   .ticket-row:first-of-type{border-top:none;}
-  .ticket-row span:first-child{color:#6b6455;}
-  .ticket-row span:last-child{font-weight:700; color:var(--navy);}
+  .ticket-row span:first-child{color:#6b6455; flex-shrink: 0;}
+  .ticket-row span:last-child{font-weight:700; color:var(--navy); text-align: right;}
   .ticket-no{
     margin-top:18px; padding-top:16px; border-top:1.5px dashed var(--navy);
     font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--brass-2); text-align:center; letter-spacing:0.12em;
   }
 
   /* ================= SECTION HEAD ================= */
-  .sec-head{margin-bottom:40px;}
+  .sec-head{margin-bottom:36px;}
   .sec-head h2{font-size:clamp(24px,3vw,32px); color:var(--navy); margin-top:16px; font-weight:700;}
-  .sec-head p{color:#5c5648; margin-top:10px; font-size:15px; max-width:640px;}
+  .sec-head p{color:#5c5648; margin-top:10px; font-size:15px; max-width:680px;}
 
   /* ================= EVENT INFO ================= */
   .info-section{background:var(--paper-2);}
   .info-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--navy); border:1px solid var(--navy);}
-  .info-card{background:var(--white); padding:32px 26px;}
+  .info-card{background:var(--white); padding:32px 24px;}
   .info-card .k{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.15em; color:var(--brass-2); font-weight:600; margin-bottom:10px;}
-  .info-card .v{font-size:17px; font-weight:700; color:var(--navy); line-height:1.5;}
-  .info-card .v small{display:block; font-weight:400; font-size:13px; color:#726c5c; margin-top:6px;}
+  .info-card .v{font-size:16.5px; font-weight:700; color:var(--navy); line-height:1.5;}
+  .info-card .v small{display:block; font-weight:500; font-size:13px; color:var(--red); margin-top:6px;}
 
-  /* ================= GIFT SECTION ================= */
+  /* ================= GIFTS ================= */
   .gift-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
   .gift-card{
     background:var(--white);
@@ -215,25 +215,16 @@
     font-size:14px; color:#4c4636;
   }
 
-  /* ================= PROJECT SCALE ================= */
+  /* ================= RENDERING & PROMISE ================= */
   .scale-section{background:var(--navy); color:var(--white);}
   .scale-section .label-bar{background:var(--brass); color:var(--navy);}
   .scale-section .label-bar::before{color:var(--navy);}
   .scale-section .sec-head h2{color:var(--white);}
   .scale-section .sec-head p{color:#c9cede;}
-  .scale-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
-  .scale-card{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.18);
-    padding:30px 28px;
-  }
-  .scale-card .place{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.14em; color:#e3c88c; margin-bottom:14px;}
-  .scale-card .num{font-family:'Noto Serif KR',serif; font-weight:900; font-size:36px; margin-bottom:4px;}
-  .scale-card .num span{font-size:16px; font-weight:500; margin-left:6px; opacity:0.75;}
-  .scale-card .target{font-size:13px; color:#b7bfd2; margin-top:10px;}
+  
   .rendering-frame{
     border:1px solid rgba(255,255,255,0.2);
-    margin-bottom:36px;
+    margin-bottom:40px;
     background:rgba(0,0,0,0.15);
   }
   .rendering-frame img{
@@ -247,24 +238,31 @@
     border-top:1px solid rgba(255,255,255,0.15);
   }
 
-  /* ================= COMPARISON TABLE ================= */
-  .compare-wrap{overflow-x:auto; border:1px solid var(--navy);}
-  table.compare{border-collapse:collapse; width:100%; min-width:640px; background:var(--white);}
-  table.compare th, table.compare td{
-    padding:16px 18px; text-align:left; font-size:14px; border-bottom:1px solid var(--line);
-    vertical-align:top;
+  /* Promise Box (인사말 및 약속) */
+  .promise-box{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.18);
+    padding:36px;
+    border-radius:4px;
   }
-  table.compare thead th{
-    background:var(--navy); color:var(--white); font-weight:700; font-size:13px;
-    letter-spacing:0.04em;
+  .promise-box h3{
+    font-size:20px; color:#e3c88c; margin-bottom:16px; font-weight:700;
   }
-  table.compare thead th:first-child{background:var(--navy-2);}
-  table.compare tbody th{
-    background:var(--paper-2); font-weight:700; color:var(--navy); width:150px;
-    font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.02em;
+  .promise-list{
+    list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:24px;
   }
-  table.compare tbody td.highlight{background:#FBF3E6; font-weight:700; color:var(--brass-2);}
-  table.compare tbody tr:last-child td, table.compare tbody tr:last-child th{border-bottom:none;}
+  .promise-list li{
+    position:relative; padding-left:24px; font-size:15.5px; color:#f0f3f9; font-weight:500;
+  }
+  .promise-list li::before{
+    content:"✓"; position:absolute; left:0; color:#e3c88c; font-weight:bold;
+  }
+  .promise-closing{
+    border-top:1px dashed rgba(255,255,255,0.2);
+    padding-top:18px;
+    font-size:15px; color:#c9cede; line-height:1.6;
+    font-weight:500;
+  }
 
   /* ================= RSVP SECTION ================= */
   .rsvp-section{background:var(--paper-2);}
@@ -275,11 +273,20 @@
     display:grid; 
     grid-template-columns:1fr 1fr; 
     gap:40px; 
-    align-items:center;
+    align-items:flex-start;
     box-shadow:0 4px 12px rgba(0,0,0,0.03);
   }
   .rsvp-box h3{color:var(--navy); font-size:24px; margin-bottom:8px;}
   .rsvp-box p{color:#5c5648; font-size:14.5px; line-height:1.6;}
+  .rsvp-notice{
+    margin-top:20px;
+    padding:14px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    font-size:12.5px;
+    color:#6b6455;
+    line-height:1.5;
+  }
   
   .rsvp-form{display:flex; flex-direction:column; gap:16px;}
   .form-group{display:flex; flex-direction:column; gap:6px;}
@@ -288,7 +295,7 @@
     font-weight:700;
     color:var(--navy);
   }
-  .rsvp-form input, .rsvp-form select{
+  .rsvp-form input{
     width:100%;
     padding:13px 14px; 
     border:1px solid var(--line); 
@@ -298,7 +305,7 @@
     color:var(--ink);
     border-radius:0;
   }
-  .rsvp-form input:focus, .rsvp-form select:focus{
+  .rsvp-form input:focus{
     outline:2px solid var(--brass); 
     outline-offset:1px;
     background:var(--white);
@@ -333,7 +340,6 @@
     .hero-inner{grid-template-columns:1fr;}
     .info-grid{grid-template-columns:1fr;}
     .gift-grid{grid-template-columns:1fr;}
-    .scale-grid{grid-template-columns:1fr;}
     .rsvp-box{grid-template-columns:1fr;}
   }
   @media (prefers-reduced-motion:reduce){
@@ -345,11 +351,9 @@
 <body>
 
 <div class="ticker">
-  <span>갈머리지구 도시개발사업 조합원 총회 · 2026.08.22(토) 오전 10시 · 킨텍스</span>
-  <span>사업설명회 참석 사은품 지급 · 1등 100만원 · 2등 50만원 · 3등 10만원</span>
+  <span>갈머리지구 도시개발사업 주민설명회 · 2026.08.22(토) 오전 10시 · 킨텍스</span>
+  <span>주민설명회 참석 사은품 지급 · 1등 100만원 · 2등 50만원 · 3등 10만원</span>
   <span>갈머리지구도시개발추진위원회 · J&C 개발</span>
-  <span>갈머리지구 도시개발사업 조합원 총회 · 2026.08.22(토) 오전 10시 · 킨텍스</span>
-  <span>사업설명회 참석 사은품 지급 · 1등 100만원 · 2등 50만원 · 3등 10만원</span>
 </div>
 
 <!-- ================= HERO ================= -->
@@ -358,10 +362,10 @@
   <div class="hero-inner">
     <div>
       <div class="eyebrow-row">
-        <div class="stamp">초청장<br>INVITE</div>
-        <span class="label-bar">조합원 총회</span>
+        <div class="stamp">모바일<br>초대장</div>
+        <span class="label-bar">주민설명회</span>
       </div>
-      <h1>갈머리지구 도시개발사업<br><span class="circled">조합원 총회</span>에<br>초대합니다</h1>
+      <h1>갈머리지구 도시개발사업<br><span class="circled">주민설명회</span>에<br>초대합니다</h1>
       <p class="sub">8월 22일 토요일, 가자! <b>킨텍스로~</b></p>
       <div class="date-block">
         <span class="date-big">2026.08.22 SAT</span>
@@ -375,11 +379,12 @@
 
     <div class="ticket">
       <div class="t-label">GENERAL ASSEMBLY TICKET</div>
-      <div class="t-title">갈머리지구 총회</div>
+      <div class="t-title">갈머리지구 주민설명회</div>
       <div class="ticket-row"><span>일시</span><span>2026. 8. 22(토) AM 10:00</span></div>
-      <div class="ticket-row"><span>장소</span><span>킨텍스</span></div>
-      <div class="ticket-row"><span>주최</span><span>갈머리지구도시개발추진위원회</span></div>
-      <div class="ticket-row"><span>공동주관</span><span>J&C 개발</span></div>
+      <div class="ticket-row"><span>버스운행</span><span>09:10 CU삼거리 출발</span></div>
+      <div class="ticket-row"><span>장소</span><span>킨텍스 2전시장 401호</span></div>
+      <div class="ticket-row"><span>주차안내</span><span>지하1층 E주차구역 앞</span></div>
+      <div class="ticket-row"><span>주최/주관</span><span>추진위 · J&C 개발</span></div>
       <div class="ticket-no mono">SEAT · 500매 한정 · 선착순 접수</div>
     </div>
   </div>
@@ -391,16 +396,16 @@
     <div class="sec-head">
       <span class="label-bar">행사 안내</span>
       <h2>갈머리지구 주민 여러분의 방문을 환영합니다</h2>
-      <p>사업설명회 및 조합원 총회 일정을 아래와 같이 안내드립니다. 좌석은 한정되어 있으니 사전 신청을 부탁드립니다.</p>
+      <p>주민설명회 일정을 아래와 같이 안내드립니다. 좌석 및 버스 이용 사전 준비를 위해 미리 신청해 주시기 바랍니다.</p>
     </div>
     <div class="info-grid">
       <div class="info-card">
         <div class="k">일시 · DATE</div>
-        <div class="v">2026년 8월 22일(토)<small>오전 10시 시작</small></div>
+        <div class="v">2026년 8월 22일(토)<small>9시 10분 CU삼거리 버스 운행</small></div>
       </div>
       <div class="info-card">
         <div class="k">장소 · VENUE</div>
-        <div class="v">킨텍스<small>사업설명회 및 총회장</small></div>
+        <div class="v">킨텍스 2전시장 401호<small>지하1층 E주차구역 앞</small></div>
       </div>
       <div class="info-card">
         <div class="k">주최 · HOST</div>
@@ -414,9 +419,9 @@
 <section id="gifts">
   <div class="wrap">
     <div class="sec-head">
-      <span class="label-bar">사업설명회 참석 사은품</span>
-      <h2>참석해주신 조합원께 추첨 사은품을 드립니다</h2>
-      <p>참석 티켓 500장 한정, 사업설명회 종료 후 현장 추첨을 통해 사은품을 지급합니다.</p>
+      <span class="label-bar">주민설명회 참석 사은품</span>
+      <h2>참석해주신 주민분들께 추첨 사은품을 드립니다</h2>
+      <p>참석 티켓 500장 한정, 주민설명회 종료 후 현장 추첨을 통해 사은품을 지급합니다.</p>
     </div>
     <div class="gift-grid">
       <div class="gift-card first">
@@ -441,104 +446,34 @@
   </div>
 </section>
 
-<!-- ================= PROJECT SCALE ================= -->
+<!-- ================= RENDERING & PROMISE ================= -->
 <section class="scale-section">
   <div class="blueprint-bg" style="opacity:0.06;"></div>
   <div class="wrap">
     <div class="sec-head">
-      <span class="label-bar">조감도 · 사업 규모</span>
-      <h2>이 땅이, <span class="circled" style="color:#e3c88c;">아파트로</span> 재탄생합니다</h2>
-      <p>GTX-A 노선 및 수도권제1순환고속도로 인접 부지를 기반으로 한 도시개발사업입니다.</p>
+      <span class="label-bar">조감도 · 사업 비전</span>
+      <h2>갈머리지구가 <span class="circled" style="color:#e3c88c;">명품 아파트로</span> 재탄생합니다</h2>
+      <p>최고의 파트너들과 함께 만들어가는 최상의 주거 단지 개발 비전입니다.</p>
     </div>
+    
     <div class="rendering-frame">
-      <img src="rendering.png" alt="갈머리지구 도시개발사업 조감도 - 대곡역 인접 1,000세대 규모 최고급 주거단지" loading="lazy">
-      <div class="rendering-caption">조감도 · 대곡역 인접 최상의 입지, 1,000세대 규모 최고급 주거단지 (예정)</div>
+      <img src="rendering.png" alt="갈머리지구 도시개발사업 조감도" loading="lazy">
+      <div class="rendering-caption">조감도 · 갈머리지구 명품 주거단지 개발 예정안</div>
     </div>
-    <div class="scale-grid">
-      <div class="scale-card">
-        <div class="place">고양시 대화역세권지식산업단지</div>
-        <div class="num">9,400<span>세대</span></div>
-        <div class="target">2029년 착공 목표</div>
-      </div>
-      <div class="scale-card">
-        <div class="place">갈머리지구 도시개발사업</div>
-        <div class="num">1,000<span>세대</span></div>
-        <div class="target">2029년 착공 목표</div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ================= COMPARISON ================= -->
-<section>
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="label-bar">사업 비교</span>
-      <h2>대화역세권지식산업단지와 갈머리지구, 무엇이 다른가요</h2>
-      <p>두 사업의 시행 구조와 청약 조건을 비교해보았습니다.</p>
-    </div>
-    <div class="compare-wrap">
-      <table class="compare">
-        <thead>
-          <tr>
-            <th>구분</th>
-            <th>고양시 대화역세권지식산업단지<br>(하이스테이지)</th>
-            <th>검단리지구 도시개발사업<br>(하이랜드)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>사업구분</th>
-            <td>공공주택특별법</td>
-            <td>도시개발법 + 주택법</td>
-          </tr>
-          <tr>
-            <th>시행자</th>
-            <td>한국토지주택공사(LH)</td>
-            <td>도시개발조합 + 주택조합</td>
-          </tr>
-          <tr>
-            <th>분양시기</th>
-            <td>입주민 조합 구성 후</td>
-            <td>실시계획인가 후</td>
-          </tr>
-          <tr>
-            <th>분양가액</th>
-            <td>실시계획인가 후 확정</td>
-            <td>감정평가(현 시세 감정)</td>
-          </tr>
-          <tr>
-            <th>청약자격</th>
-            <td>지구지정 공람공고일 이전 전입, 1년 이상 거주 무주택자 또는 전용 85㎡ 이하 1주택 소유자</td>
-            <td>수도권 6개월 이상 거주 무주택자</td>
-          </tr>
-          <tr>
-            <th>분양유형</th>
-            <td>전용 85㎡ 이하</td>
-            <td>전용 85㎡ 이하</td>
-          </tr>
-          <tr>
-            <th>단지위치</th>
-            <td>화정지구 인접</td>
-            <td>화정 · 검단리지구 인접</td>
-          </tr>
-          <tr>
-            <th>브랜드</th>
-            <td>LH 아파트</td>
-            <td class="highlight">국내 최고 브랜드 도입 추진</td>
-          </tr>
-          <tr>
-            <th>준공목표</th>
-            <td>2029년</td>
-            <td>2029년</td>
-          </tr>
-          <tr>
-            <th>동호 배정</th>
-            <td>로얄동호 우선 공급</td>
-            <td>로얄동호 우선 공급</td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- 약속 및 인사말 섹션 -->
+    <div class="promise-box">
+      <h3>주민분들을 위한 최고의 선택과 약속</h3>
+      <ul class="promise-list">
+        <li>최고의 파트너들과 함께 만들어가는 최고의 선택</li>
+        <li>LH가 보다높은 확실한 보상</li>
+        <li>모든주민들에게 아파트 입주권보장</li>
+        <li>최고의 입지 및 국내 1군 명품브랜드 도입</li>
+        <li>원주민들을 위한 로얄층 동·호수 우선배정</li>
+      </ul>
+      <div class="promise-closing">
+        저희의 약속을 오셔서 직접 들어보시고 선택하시길 바랍니다.
+      </div>
     </div>
   </div>
 </section>
@@ -549,8 +484,13 @@
     <div class="rsvp-box">
       <div>
         <span class="label-bar" style="margin-bottom:16px;">사전 접수</span>
-        <h3>총회 참석을 신청해주세요</h3>
-        <p>참석 티켓은 500장 한정입니다.<br>사전 신청 정보를 작성해주시면 현장 좌석 배치 및 사은품 추첨 번호표를 신속히 안내해 드립니다.</p>
+        <h3>주민설명회 참석을 신청해 주세요</h3>
+        <p>참석 티켓은 500장 한정입니다.<br>사전 신청 정보를 작성해 주시면 현장 좌석 배치 및 사은품 추첨 번호표를 신속히 안내해 드립니다.</p>
+        
+        <div class="rsvp-notice">
+          ※ 사전신청정보를 작성해 주시면 현장에서의 추첨번호표 별도 작성 없이 자동으로 행운권추첨권이 등록이 됩니다.<br>
+          (본 작성정보는 도시개발사업등을 위한 안내등에 활용될 수 있음을 안내드립니다)
+        </div>
       </div>
 
       <form class="rsvp-form" id="rsvpForm">
@@ -564,12 +504,10 @@
           <input type="tel" id="phone" name="연락처" placeholder="010-0000-0000" required>
         </div>
         
+        <!-- 변경된 소유지 구역 입력칸 -->
         <div class="form-group">
-          <label for="project">관심 사업 선택</label>
-          <select id="project" name="관심사업">
-            <option value="대화역세권지식산업단지">고양시 대화역세권지식산업단지 (하이스테이지)</option>
-            <option value="검단리지구 도시개발사업">검단리지구 도시개발사업 (하이랜드)</option>
-          </select>
+          <label for="location">소유지 구역</label>
+          <input type="text" id="location" name="소유지구역" placeholder="예: 갈머리지구 OO리 OO번지" required>
         </div>
         
         <button type="submit" class="submit-btn" id="submitBtn">신청 완료하기</button>
@@ -580,11 +518,10 @@
 
 <footer>
   <p><b>갈머리지구도시개발추진위원회</b> · 공동주관 J&C 개발</p>
-  <p style="margin-top:6px;">2026. 8. 22(토) 오전 10시 · 킨텍스</p>
+  <p style="margin-top:6px;">2026. 8. 22(토) 오전 10시 · 킨텍스 2전시장 401호</p>
 </footer>
 
 <script>
-  // 구글 앱스 스크립트 웹 앱 URL
   const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx6T2Ur-nJvHgiI6DcG3-3g7C5YzUVeI7n4IeFoE6pEse39W2bru9TKWiMmQopHVwaWxw/exec';
 
   const form = document.getElementById('rsvpForm');
@@ -599,7 +536,7 @@
     const formData = {
       '성함': document.getElementById('name').value,
       '연락처': document.getElementById('phone').value,
-      '관심사업': document.getElementById('project').value
+      '소유지구역': document.getElementById('location').value
     };
 
     fetch(GOOGLE_SCRIPT_URL, {
