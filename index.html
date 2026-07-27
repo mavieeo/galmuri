@@ -222,20 +222,40 @@
   .scale-section .sec-head h2{color:var(--white);}
   .scale-section .sec-head p{color:#c9cede;}
   
-  .rendering-frame{
-    border:1px solid rgba(255,255,255,0.2);
+  /* 조감도 이미지 컨테이너 (여백 및 클릭 커서 스타일 적용) */
+  .rendering-container{
+    display:flex;
+    flex-direction:column;
+    gap:24px; /* 이미지 간 24px 간격 */
     margin-bottom:40px;
+  }
+  .rendering-item{
+    border:1px solid rgba(255,255,255,0.2);
     background:rgba(0,0,0,0.15);
+    overflow:hidden;
+    position:relative;
+    cursor:zoom-in; /* 확대 기능 안내 마우스 커서 */
   }
-  .rendering-frame img{
-    display:block; width:100%; height:auto;
+  .rendering-item img{
+    display:block;
+    width:100%;
+    height:auto;
+    transition:transform 0.25s ease;
   }
-  .rendering-caption{
-    padding:12px 18px;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:12px; letter-spacing:0.06em;
-    color:#c9cede;
-    border-top:1px solid rgba(255,255,255,0.15);
+  .rendering-item:hover img{
+    transform:scale(1.015); /* 마우스 올렸을 때 미세 효과 */
+  }
+  .zoom-hint{
+    position:absolute;
+    bottom:12px;
+    right:12px;
+    background:rgba(0,0,0,0.65);
+    color:#fff;
+    padding:6px 12px;
+    font-size:12px;
+    border-radius:20px;
+    pointer-events:none;
+    backdrop-filter:blur(4px);
   }
 
   /* Promise Box (인사말 및 약속) */
@@ -262,6 +282,48 @@
     padding-top:18px;
     font-size:15px; color:#c9cede; line-height:1.6;
     font-weight:500;
+  }
+
+  /* ================= IMAGE LIGHTBOX MODAL ================= */
+  .image-modal{
+    display:none;
+    position:fixed;
+    z-index:9999;
+    top:0; left:0; width:100%; height:100%;
+    background:rgba(0, 0, 0, 0.88);
+    backdrop-filter:blur(5px);
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+  }
+  .image-modal.active{
+    display:flex;
+  }
+  .modal-content{
+    max-width:92vw;
+    max-height:92vh;
+    object-fit:contain;
+    border-radius:4px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.5);
+    animation:zoomIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .modal-close{
+    position:absolute;
+    top:20px; right:24px;
+    color:#ffffff;
+    font-size:36px;
+    font-weight:bold;
+    cursor:pointer;
+    user-select:none;
+    transition:color 0.2s;
+  }
+  .modal-close:hover{
+    color:var(--brass);
+  }
+
+  @keyframes zoomIn {
+    from { transform:scale(0.92); opacity:0; }
+    to { transform:scale(1); opacity:1; }
   }
 
   /* ================= RSVP SECTION ================= */
@@ -356,7 +418,6 @@
   <span>갈머리지구도시개발추진위원회 · J&C 개발</span>
 </div>
 
-<!-- ================= HERO ================= -->
 <div class="hero">
   <div class="blueprint-bg" style="opacity:0.14;"></div>
   <div class="hero-inner">
@@ -390,7 +451,6 @@
   </div>
 </div>
 
-<!-- ================= EVENT INFO ================= -->
 <section class="info-section">
   <div class="wrap">
     <div class="sec-head">
@@ -415,7 +475,6 @@
   </div>
 </section>
 
-<!-- ================= GIFTS ================= -->
 <section id="gifts">
   <div class="wrap">
     <div class="sec-head">
@@ -446,22 +505,26 @@
   </div>
 </section>
 
-<!-- ================= RENDERING & PROMISE ================= -->
 <section class="scale-section">
   <div class="blueprint-bg" style="opacity:0.06;"></div>
   <div class="wrap">
     <div class="sec-head">
       <span class="label-bar">조감도 · 사업 비전</span>
       <h2>갈머리지구가 <span class="circled" style="color:#e3c88c;">명품 아파트로</span> 재탄생합니다</h2>
-      <p>최고의 파트너들과 함께 만들어가는 최상의 주거 단지 개발 비전입니다.</p>
+      <p>최고의 파트너들과 함께 만들어가는 최상의 주거 단지 개발 비전입니다. (이미지를 클릭하시면 크게 확대하여 보실 수 있습니다)</p>
     </div>
     
-    <div class="rendering-frame">
-      <img src="rendering.jpg" alt="갈머리지구 도시개발사업 조감도" loading="lazy">
-      <img src="rendering1.jpg" alt="갈머리지구 도시개발사업 조감도" loading="lazy">
+    <div class="rendering-container">
+      <div class="rendering-item" onclick="openModal('rendering.jpg')">
+        <img src="rendering.jpg" alt="갈머리지구 도시개발사업 조감도 1" loading="lazy">
+        <span class="zoom-hint">🔍 클릭하여 크게보기</span>
+      </div>
+      <div class="rendering-item" onclick="openModal('rendering1.jpg')">
+        <img src="rendering1.jpg" alt="갈머리지구 도시개발사업 조감도 2" loading="lazy">
+        <span class="zoom-hint">🔍 클릭하여 크게보기</span>
+      </div>
     </div>
 
-    <!-- 약속 및 인사말 섹션 -->
     <div class="promise-box">
       <h3>주민분들을 위한 최고의 선택과 약속</h3>
       <ul class="promise-list">
@@ -478,7 +541,11 @@
   </div>
 </section>
 
-<!-- ================= RSVP (구글 스프레드시트 연동 폼) ================= -->
+<div class="image-modal" id="imageModal" onclick="closeModal()">
+  <span class="modal-close">&times;</span>
+  <img class="modal-content" id="modalImage" alt="조감도 원본 이미지">
+</div>
+
 <section class="rsvp-section" id="rsvp">
   <div class="wrap">
     <div class="rsvp-box">
@@ -504,7 +571,6 @@
           <input type="tel" id="phone" name="연락처" placeholder="010-0000-0000" required>
         </div>
         
-        <!-- 변경된 소유지 구역 입력칸 -->
         <div class="form-group">
           <label for="location">소유지 구역</label>
           <input type="text" id="location" name="소유지구역" placeholder="예: 갈머리지구 OO리 OO번지" required>
@@ -522,6 +588,29 @@
 </footer>
 
 <script>
+  // ---------- 이미지 원본 확대(모달) 스크립트 ----------
+  function openModal(imageSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    modalImg.src = imageSrc;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto'; // 스크롤 복구
+  }
+
+  // ESC 키로 모달 닫기
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+
+  // ---------- 구글 스프레드시트 연동 폼 스크립트 ----------
   const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyo0g0dS9XOgFdvFJvslJh0CuwVwqJjJZurpuhLDC5tmfwcvTiU1W2Sj8bkSqiJmYuCSQ/exec';
 
   const form = document.getElementById('rsvpForm');
