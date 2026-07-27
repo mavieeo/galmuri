@@ -242,6 +242,7 @@
     backdrop-filter:blur(4px);
   }
 
+  /* 약속 박스 */
   .promise-box{
     background:rgba(255,255,255,0.05);
     border:1px solid rgba(255,255,255,0.18);
@@ -267,6 +268,92 @@
     font-weight:500;
   }
 
+  /* 민간개발 협력업체 도표 스타일 */
+  .partner-table-wrap {
+    background: var(--white);
+    padding: 40px;
+    border: 1px solid var(--line);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  }
+  
+  .partner-table-wrap h3 {
+    font-size: 20px;
+    color: var(--navy);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .partner-table-wrap h3::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 24px;
+    background-color: var(--brass);
+  }
+
+  .partner-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    border-top: 2px solid var(--navy);
+  }
+  
+  .partner-table th, .partner-table td {
+    border: 1px solid var(--table-line);
+    padding: 16px 12px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  /* 헤더 스타일 */
+  .partner-table thead th {
+    background-color: var(--paper-2);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 15px;
+  }
+  
+  /* 구분 열 스타일 */
+  .partner-table tbody th.category {
+    background-color: var(--th-bg);
+    color: var(--navy);
+    font-weight: 600;
+    width: 25%;
+    text-align: left;
+    padding-left: 20px;
+  }
+  
+  /* 협력사/순위 열 */
+  .partner-table tbody td.partner {
+    color: var(--ink);
+    font-weight: 500;
+    width: 20%;
+  }
+  
+  .partner-table tbody td.rank {
+    color: var(--brass-2);
+    font-weight: 700;
+    width: 15%;
+    font-size: 16px;
+  }
+  
+  /* 회사소개 열 (왼쪽 정렬) */
+  .partner-table tbody td.intro {
+    color: #4c4636;
+    text-align: left;
+    width: 40%;
+    line-height: 1.5;
+  }
+  
+  /* 불릿 포인트 */
+  .partner-table tbody th.category::before {
+    content: '○ ';
+    color: var(--brass-2);
+    font-weight: bold;
+  }
+  
   /* ================= GIFTS ================= */
   .gift-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
   .gift-card{
@@ -431,6 +518,20 @@
     .gift-card .people{
       font-size:11px;
     }
+    
+    /* 테이블 모바일 대응 */
+    .partner-table-wrap {
+      padding: 20px;
+    }
+    .partner-table {
+      font-size: 12px;
+    }
+    .partner-table th, .partner-table td {
+      padding: 10px 6px;
+    }
+    .partner-table tbody th.category {
+      padding-left: 10px;
+    }
   }
 
   @media (prefers-reduced-motion:reduce){
@@ -541,6 +642,47 @@
         저희의 약속을 오셔서 직접 들어보시고 선택하시길 바랍니다.
       </div>
     </div>
+
+    <div class="partner-table-wrap">
+      <h3>민간개발 협력업체 소개</h3>
+      <table class="partner-table">
+        <thead>
+          <tr>
+            <th>업 무</th>
+            <th>협력사</th>
+            <th>국내순위</th>
+            <th>회사소개</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="category">도시개발사업 인.허가</th>
+            <td class="partner">도화엔지니어링</td>
+            <td class="rank">1위</td>
+            <td class="intro">국내1위 종합엔지니어링기업<br>1957년 설립, 종업원 2,956명</td>
+          </tr>
+          <tr>
+            <th class="category">아파트설계 인.허가</th>
+            <td class="partner">㈜토문건축사사무소</td>
+            <td class="rank">10위</td>
+            <td class="intro">아파트설계에 특화된 건축사사무소<br>2003년 설립, 종업원 280명</td>
+          </tr>
+          <tr>
+            <th class="category">사업 관련법률 검토</th>
+            <td class="partner">법무법인(유)지평</td>
+            <td class="rank">7위</td>
+            <td class="intro">부동산 전담파트 배정<br>2000년 설립, 변호사 300명</td>
+          </tr>
+          <tr>
+            <th class="category">현시세(매매가) 감정</th>
+            <td class="partner">감정평가법인경일</td>
+            <td class="rank">4위</td>
+            <td class="intro">협의보상, 재결, 현금청산 등 감정<br>2002년 설립, 종업원 334명</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
   </div>
 </section>
 
