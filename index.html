@@ -78,10 +78,10 @@
   }
   .ticker span{padding:0 34px; opacity:0.85;}
 
-  /* ================= HERO (원래 베이지 배경 복원) ================= */
+  /* ================= HERO (베이지 배경) ================= */
   .hero{
     padding:0;
-    background:var(--paper); /* 원래 베이지색 배경 */
+    background:var(--paper);
     border-bottom:3px solid var(--navy);
   }
   .hero-inner{
@@ -93,18 +93,26 @@
     gap:40px;
     align-items:center;
   }
-  .eyebrow-row{display:flex; align-items:center; gap:14px; margin-bottom:26px; flex-wrap:wrap;}
+  .eyebrow-row{display:flex; align-items:center; gap:16px; margin-bottom:26px; flex-wrap:wrap;}
+  
+  /* 공식 초대장 도장 스타일 강화 */
   .stamp{
-    width:96px; height:96px; border-radius:50%;
-    border:3px solid var(--red);
+    width:92px; height:92px; border-radius:50%;
+    border:2px solid var(--red);
+    outline:2px dashed var(--red);
+    outline-offset:-5px;
     color:var(--red);
-    display:flex; align-items:center; justify-content:center;
-    text-align:center; font-weight:900; font-size:13px; line-height:1.3;
-    transform:rotate(-11deg);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; font-weight:900; line-height:1.2;
+    transform:rotate(-8deg);
     flex-shrink:0;
     font-family:'Noto Serif KR', serif;
     background:var(--white);
+    box-shadow:0 3px 10px rgba(178,58,46,0.12);
   }
+  .stamp .en{font-size:9px; letter-spacing:0.12em; font-family:'IBM Plex Mono', monospace; font-weight:600;}
+  .stamp .ko{font-size:14px; margin-top:2px; letter-spacing:-0.02em;}
+
   .hero h1{
     font-size:clamp(30px, 4.2vw, 44px);
     font-weight:900;
@@ -161,7 +169,7 @@
   }
   .ticket::before,.ticket::after{
     content:""; position:absolute;
-    width:26px; height:26px; background:var(--paper); /* 티켓 홈 배경도 베이지색으로 복원 */
+    width:26px; height:26px; background:var(--paper);
     border:1.5px dashed var(--navy);
     border-radius:50%;
     top:50%; transform:translateY(-50%);
@@ -191,31 +199,6 @@
   .info-card .k{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.15em; color:var(--brass-2); font-weight:600; margin-bottom:10px;}
   .info-card .v{font-size:16.5px; font-weight:700; color:var(--navy); line-height:1.5;}
   .info-card .v small{display:block; font-weight:500; font-size:13px; color:var(--red); margin-top:6px;}
-
-  /* ================= GIFTS ================= */
-  .gift-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
-  .gift-card{
-    background:var(--white);
-    border:1px solid var(--line);
-    border-top:5px solid var(--brass);
-    padding:34px 24px;
-    text-align:center;
-    position:relative;
-  }
-  .gift-card.first{border-top-color:var(--red);}
-  .gift-card .rank{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:13px; font-weight:600; letter-spacing:0.14em; color:#867d68;
-    margin-bottom:14px;
-  }
-  .gift-card .amt{font-family:'Noto Serif KR',serif; font-weight:900; font-size:30px; color:var(--navy); margin-bottom:8px;}
-  .gift-card .people{font-size:14px; color:#726c5c;}
-  .gift-note{
-    margin-top:30px; padding:18px 22px;
-    border-left:3px solid var(--brass);
-    background:var(--white);
-    font-size:14px; color:#4c4636;
-  }
 
   /* ================= RENDERING & PROMISE ================= */
   .scale-section{background:var(--navy); color:var(--white);}
@@ -282,6 +265,31 @@
     padding-top:18px;
     font-size:15px; color:#c9cede; line-height:1.6;
     font-weight:500;
+  }
+
+  /* ================= GIFTS ================= */
+  .gift-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .gift-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-top:5px solid var(--brass);
+    padding:34px 24px;
+    text-align:center;
+    position:relative;
+  }
+  .gift-card.first{border-top-color:var(--red);}
+  .gift-card .rank{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px; font-weight:600; letter-spacing:0.14em; color:#867d68;
+    margin-bottom:14px;
+  }
+  .gift-card .amt{font-family:'Noto Serif KR',serif; font-weight:900; font-size:30px; color:var(--navy); margin-bottom:8px;}
+  .gift-card .people{font-size:14px; color:#726c5c;}
+  .gift-note{
+    margin-top:30px; padding:18px 22px;
+    border-left:3px solid var(--brass);
+    background:var(--white);
+    font-size:14px; color:#4c4636;
   }
 
   /* ================= IMAGE LIGHTBOX MODAL ================= */
@@ -404,7 +412,6 @@
     .info-grid{grid-template-columns:1fr;}
     .rsvp-box{grid-template-columns:1fr;}
     
-    /* 모바일에서 사은품 3개가 한 줄로 표시되도록 유지 */
     .gift-grid{
       grid-template-columns:repeat(3, 1fr);
       gap:8px;
@@ -445,7 +452,10 @@
   <div class="hero-inner">
     <div>
       <div class="eyebrow-row">
-        <div class="stamp">모바일<br>초대장</div>
+        <div class="stamp">
+          <span class="en">INVITATION</span>
+          <span class="ko">초대장</span>
+        </div>
         <span class="label-bar">주민설명회</span>
       </div>
       <h1>갈머리지구 도시개발사업<br><span class="circled">주민설명회</span>에<br>초대합니다</h1>
@@ -497,36 +507,6 @@
   </div>
 </section>
 
-<section id="gifts">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="label-bar">주민설명회 참석 사은품</span>
-      <h2>참석해주신 주민분들께 추첨 사은품을 드립니다</h2>
-      <p>참석 티켓 500장 한정, 주민설명회 종료 후 현장 추첨을 통해 사은품을 지급합니다.</p>
-    </div>
-    <div class="gift-grid">
-      <div class="gift-card first">
-        <div class="rank">1등 · 1인</div>
-        <div class="amt">100만원</div>
-        <div class="people">추첨 1인</div>
-      </div>
-      <div class="gift-card">
-        <div class="rank">2등 · 2인</div>
-        <div class="amt">50만원</div>
-        <div class="people">추첨 2인</div>
-      </div>
-      <div class="gift-card">
-        <div class="rank">3등 · 30인</div>
-        <div class="amt">10만원</div>
-        <div class="people">추첨 30인</div>
-      </div>
-    </div>
-    <div class="gift-note">
-      참석 티켓은 총 500장 한정이며, 추첨 대상자는 현장 접수 순서에 따라 배정됩니다. 주최 · 갈머리지구도시개발추진위원회 / 공동주관 · J&C 개발
-    </div>
-  </div>
-</section>
-
 <section class="scale-section">
   <div class="blueprint-bg" style="opacity:0.06;"></div>
   <div class="wrap">
@@ -559,6 +539,36 @@
       <div class="promise-closing">
         저희의 약속을 오셔서 직접 들어보시고 선택하시길 바랍니다.
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="gifts">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label-bar">주민설명회 참석 사은품</span>
+      <h2>참석해주신 주민분들께 추첨 사은품을 드립니다</h2>
+      <p>참석 티켓 500장 한정, 주민설명회 종료 후 현장 추첨을 통해 사은품을 지급합니다.</p>
+    </div>
+    <div class="gift-grid">
+      <div class="gift-card first">
+        <div class="rank">1등 · 1인</div>
+        <div class="amt">100만원</div>
+        <div class="people">추첨 1인</div>
+      </div>
+      <div class="gift-card">
+        <div class="rank">2등 · 2인</div>
+        <div class="amt">50만원</div>
+        <div class="people">추첨 2인</div>
+      </div>
+      <div class="gift-card">
+        <div class="rank">3등 · 30인</div>
+        <div class="amt">10만원</div>
+        <div class="people">추첨 30인</div>
+      </div>
+    </div>
+    <div class="gift-note">
+      참석 티켓은 총 500장 한정이며, 추첨 대상자는 현장 접수 순서에 따라 배정됩니다. 주최 · 갈머리지구도시개발추진위원회 / 공동주관 · J&C 개발
     </div>
   </div>
 </section>
