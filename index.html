@@ -784,6 +784,16 @@
     btn.disabled = true;
     btn.innerText = '제출 중...';
 
+    // 연락처 가져오기
+    let rawPhone = document.getElementById('phone').value.trim();
+    
+    // 맨 앞에 '0'이 누락되었거나 숫자만 들어온 경우 처리
+    // 스프레드시트가 텍스트로 인식하게 하려면 앞에 "'"를 붙여줍니다.
+    if (rawPhone.startsWith('10')) {
+      rawPhone = '0' + rawPhone;
+    }
+    const formattedPhone = "'" + rawPhone; // 앞에 작은따옴표(')를 붙이면 스프레드시트가 문자열로 인식합니다.
+    
     const formData = {
       '성함': document.getElementById('name').value,
       '연락처': document.getElementById('phone').value,
